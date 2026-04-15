@@ -17,25 +17,35 @@ static int64_t hash(uint8_t x)
 
 struct tablehash_t *nouv_tablehash(void)
 {
-    // a changer
-    // le compilateur genere aussi un avertissement si on
-    //   declare une fonction et qu'on ne s'en sert jamais !
-    (void)hash(0);
-    return NULL;
+    struct tablehash_t *th = malloc(sizeof(struct tablehash_t));
+    assert(th != NULL);
+
+    th->nbr_elem = 0;
+
+    for (size_t i = 0; i < TAILLE_TABLE; i++)
+    {
+        th->table[i] = nouv_liste();
+        assert(th->table[i] != NULL);
+    }
+
+    return th;
 }
 
 bool est_vide_tablehash(struct tablehash_t *th)
 {
-    // a changer
-    (void)th;
-    return false;
+    assert(th != NULL);
+    return th->nbr_elem == 0;
 }
 
 void inserer_val_tablehash(uint8_t val, struct tablehash_t *th)
 {
-    // a completer
-    (void)val;
-    (void)th;
+    assert(th != NULL);
+
+    int64_t idx = hash(val);
+
+    inserer_tete_liste(val, th->table[idx]);
+
+    th->nbr_elem++;
 }
 
 void supprimer_val_tablehash(uint8_t val, struct tablehash_t *th)

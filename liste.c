@@ -95,4 +95,3 @@ void detruire_liste(struct liste_t **liste) // *liste est la vraie liste car def
     free(*liste);
     *liste = NULL; // éviter les pointeurs pendants
 }
-
