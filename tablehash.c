@@ -15,7 +15,7 @@ static int64_t hash(uint8_t x)
     return x % TAILLE_TABLE;
 }
 
-struct tablehash_t *nouv_tablehash(void)
+struct tablehash_t* nouv_tablehash(void)
 {
     struct tablehash_t *th = malloc(sizeof(struct tablehash_t));
     assert(th != NULL);
@@ -50,20 +50,34 @@ void inserer_val_tablehash(uint8_t val, struct tablehash_t *th)
 
 void supprimer_val_tablehash(uint8_t val, struct tablehash_t *th)
 {
-    // a completer
-    (void)val;
-    (void)th;
+    assert(th != NULL);
+
+    int64_t idx = hash(val);
+
+    if (supprimer_val_liste(val, th->table[idx]))
+    {
+        th->nbr_elem--;
+    }
 }
 
 void afficher_tablehash(struct tablehash_t *th)
 {
-    // a completer
-    (void)th;
+    assert(th != NULL);
+    for (size_t i = 0; i < TAILLE_TABLE; i++)
+    {
+        afficher_liste(th->table[i]);
+    }
 }
+
 
 void detruire_tablehash(struct tablehash_t **th)
 {
-    // a completer
-    (void)th;
+    assert(th != NULL);
+     for (size_t i = 0; i < TAILLE_TABLE; i++)
+     {
+          detruire_liste(&((*th)->table[i]));
+     }
+     free(*th);
+     *th = NULL;
 }
 
