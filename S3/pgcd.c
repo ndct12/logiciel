@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
         fprintf(stderr, "usage: %s a b (ou a et b sont > 0)\n", argv[0]);
         return 1;
     }
-    a = atoi(argv[1]);
+    a = atoi(argv[1]); //asci to int 
     b = atoi(argv[2]);
     if ((a == 0) || (b == 0)) {
         fprintf(stderr, "Erreur : les entiers doivent etre strictement positifs\n");
