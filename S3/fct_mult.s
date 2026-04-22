@@ -27,9 +27,9 @@ je fin_while
 addq x, %rax
 subq $1, y 
 jmp while
-fin_while: 
-ret 
+fin_while:
 leave 
+ret 
 
 /* 
 uint64_t mult_egypt(void)

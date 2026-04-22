@@ -16,8 +16,8 @@ addq $1, taille
 jmp for_taille
 fin_for_taille
 movq taille, %rax
-ret
 leave
+ret
 
 
 .globl inverse_chaines

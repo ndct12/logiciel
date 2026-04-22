@@ -42,5 +42,5 @@ somme:
             jmp for
         fin_for:
     movb res, %al
-    leave 
     ret 
+    leave 
